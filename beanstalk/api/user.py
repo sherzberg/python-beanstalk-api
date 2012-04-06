@@ -10,3 +10,17 @@ class User(Base):
             url = 'users.json'
             
         return self._do_request(url)
+    
+    def create(self, login, email, first_name, last_name, password):
+        url = 'users.json'
+        data = {
+                'user': {
+                               'login': login,
+                               'email': email,
+                               'first_name': first_name,
+                               'last_name': last_name,
+                               'password': password
+                               }
+                }
+
+        return self._do_request(url, data)
