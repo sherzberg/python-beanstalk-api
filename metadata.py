@@ -1,4 +1,4 @@
-name = 'python-beanstalk-api'
+name = 'beanstalk'
 authors = 'Spencer Herzberg'
 author_email = 'spencer.herzberg@gmail.com'
 version = '1b'
