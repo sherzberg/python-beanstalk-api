@@ -1,3 +1,9 @@
+python-beanstalk-api is provided under the GPL v3. 
+
+Here is a copy of the license for your review.
+
+===================================================================
+
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
