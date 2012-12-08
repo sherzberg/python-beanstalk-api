@@ -1,7 +1,10 @@
-
 This is an implementation of the Beanstalk VCS API in Python.
 
 This api will allow you to manage your beanstalk vcs. All requests are made with simple json. The results for api requests are turned into simple dictionaries for maximum flexibility.
+
+Legal:
+
+Python Beanstalk API is provided under the GPL v3. The LICENSE.txt file is a copy of the license for your review.
 
 Prerequisites:
 
