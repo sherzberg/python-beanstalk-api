@@ -1,11 +1,11 @@
-import urllib, urllib2, base64, json
+import requests
+import json
 
 class BeanstalkAuth(object):
     _instance = None
-    def __new__(cls, *args, **kwargs):
+    def __new__(cls, domain, username, password):
         if not cls._instance:
-            cls._instance = super(BeanstalkAuth, cls).__new__(
-                                cls, *args, **kwargs)
+            cls._instance = object.__new__(cls)
         return cls._instance
     
     def __init__(self, domain, username, password):
@@ -32,20 +32,10 @@ class Base():
         auth = BeanstalkAuth.get_instance()
         request_url = auth.api_url+url
            
+        headers={'content-type': 'application/json'}
         if data:
-            data_json = json.dumps(data)
-            request = urllib2.Request(request_url, data_json, {'content-type': 'application/json'})
+            r = requests.post(request_url, data=json.dumps(data), auth=(auth.username, auth.password), headers=headers)
         else:
-            request = urllib2.Request(request_url)
-            
-        base64string = base64.encodestring('%s:%s' % (auth.username, auth.password)).replace('\n', '')
-        request.add_header("Authorization", "Basic %s" % base64string)
-        
-        try:
-            result = urllib2.urlopen(request)
-        except Exception as e:
-            print e
-            return None
-
-        return json.loads(result.read())
-        
+            r = requests.get(request_url, auth=(auth.username, auth.password))
+        r.raise_for_status()
+        return r.json

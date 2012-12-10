@@ -1,5 +1,5 @@
 
-from base import Base
+from .base import Base
 
 class User(Base):
     
@@ -43,6 +43,6 @@ class User(Base):
         if admin != None:
             data['user']['admin'] = admin
         
-        print data
+        print(data)
         
         return self._do_request(url, data)
