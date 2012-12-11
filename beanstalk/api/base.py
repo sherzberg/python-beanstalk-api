@@ -12,7 +12,7 @@ class BeanstalkAuth(object):
         self.domain = domain
         self.username = username
         self.password = password
-        self.api_url = 'http://{0}.beanstalkapp.com/api/'.format(self.domain)
+        self.api_url = 'https://{0}.beanstalkapp.com/api/'.format(self.domain)
     
     @staticmethod
     def get_instance():
@@ -28,14 +28,26 @@ class BeanstalkAuth(object):
 
 class Base():
     
-    def _do_request(self, url, data=None):
+    def _do_request(self, url, method, data):
         auth = BeanstalkAuth.get_instance()
         request_url = auth.api_url+url
            
-        headers={'content-type': 'application/json'}
-        if data:
-            r = requests.post(request_url, data=json.dumps(data), auth=(auth.username, auth.password), headers=headers)
-        else:
-            r = requests.get(request_url, auth=(auth.username, auth.password))
+        r = getattr(requests, method)(request_url,
+                                      data=json.dumps(data),
+                                      auth=(auth.username, auth.password),
+                                      headers={'content-type': 'application/json'})
         r.raise_for_status()
         return r.json
+
+    def _do_get(self, url):
+        return self._do_request(url, 'get', None)
+
+    def _do_post(self, url, data):
+        return self._do_request(url, 'post', data)
+
+    def _do_put(self, url, data):
+        return self._do_request(url, 'put', data)
+
+    def _do_delete(self, url, data):
+        return self._do_request(url, 'delete', data)
+
