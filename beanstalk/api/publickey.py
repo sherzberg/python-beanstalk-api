@@ -11,7 +11,7 @@ class PublicKey(Base):
         else:
             url = 'public_keys.json'
         
-        return self._do_request(url, method='get')
+        return self._do_get(url)
     
     def create(self, content, name=None, user_id=None):
         url = 'public_keys.json'
@@ -23,4 +23,4 @@ class PublicKey(Base):
         if name:
             data['public_key']['name'] = name
         
-        return self._do_request(url, method='post', data=data)
+        return self._do_post(url, data)

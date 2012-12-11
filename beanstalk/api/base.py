@@ -28,7 +28,7 @@ class BeanstalkAuth(object):
 
 class Base():
     
-    def _do_request(self, url, method, data=None):
+    def _do_request(self, url, method, data):
         auth = BeanstalkAuth.get_instance()
         request_url = auth.api_url+url
            
@@ -38,3 +38,16 @@ class Base():
                                       headers={'content-type': 'application/json'})
         r.raise_for_status()
         return r.json
+
+    def _do_get(self, url):
+        return self._do_request(url, 'get', None)
+
+    def _do_post(self, url, data):
+        return self._do_request(url, 'post', data)
+
+    def _do_put(self, url, data):
+        return self._do_request(url, 'put', data)
+
+    def _do_delete(self, url, data):
+        return self._do_request(url, 'delete', data)
+
