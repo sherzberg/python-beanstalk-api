@@ -12,7 +12,7 @@ class BeanstalkAuth(object):
         self.domain = domain
         self.username = username
         self.password = password
-        self.api_url = 'http://{0}.beanstalkapp.com/api/'.format(self.domain)
+        self.api_url = 'https://{0}.beanstalkapp.com/api/'.format(self.domain)
     
     @staticmethod
     def get_instance():
