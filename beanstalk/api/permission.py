@@ -6,7 +6,7 @@ class Permission(Base):
     def find(self,user_id=None):
         url = 'permissions/{0}.json'.format(user_id)
         
-        return self._do_request(url)
+        return self._do_request(url, method='get')
     
     def create(self, user_id=None, repository_id=None, read=None, write=None, server_environment=None):
         url = 'permissions.json'
@@ -24,4 +24,4 @@ class Permission(Base):
         if server_environment:
             data['permission']['server_environment'] = server_environment
         
-        return self._do_request(url, data)
+        return self._do_request(url, method='post', data=data)

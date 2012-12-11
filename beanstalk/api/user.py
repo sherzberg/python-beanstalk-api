@@ -26,7 +26,7 @@ class User(Base):
         if admin:
             data['user']['admin'] = True
             
-        return self._do_request(url, data)
+        return self._do_request(url, method='post', data=data)
     
     def update(self, id, first_name=None, last_name=None, email=None, password=None, admin=None):
         url = 'users/{0}.json'.format(id)
@@ -45,4 +45,4 @@ class User(Base):
         
         print(data)
         
-        return self._do_request(url, data)
+        return self._do_request(url, method='put', data=data)

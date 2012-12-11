@@ -28,14 +28,13 @@ class BeanstalkAuth(object):
 
 class Base():
     
-    def _do_request(self, url, data=None):
+    def _do_request(self, url, method, data=None):
         auth = BeanstalkAuth.get_instance()
         request_url = auth.api_url+url
            
-        headers={'content-type': 'application/json'}
-        if data:
-            r = requests.post(request_url, data=json.dumps(data), auth=(auth.username, auth.password), headers=headers)
-        else:
-            r = requests.get(request_url, auth=(auth.username, auth.password))
+        r = getattr(requests, method)(request_url,
+                                      data=json.dumps(data),
+                                      auth=(auth.username, auth.password),
+                                      headers={'content-type': 'application/json'})
         r.raise_for_status()
         return r.json

@@ -9,7 +9,7 @@ class Repository(Base):
         else:
             url = 'repositories.json'
             
-        return self._do_request(url)
+        return self._do_request(url, method='get')
     
     def create(self, name, title, color_label='label-white', vcs='subversion',  create_structure=False):
         url = 'repositories.json'
@@ -22,4 +22,4 @@ class Repository(Base):
                                }
                 }
 
-        return self._do_request(url, data)
+        return self._do_request(url, method='post', data=data)
