@@ -21,11 +21,6 @@ class BeanstalkAuth(object):
         else:
             raise Exception("You need to setup this class first!")
 
-
-
-
-
-
 class Base():
     
     def _do_request(self, url, method, data):
@@ -37,7 +32,7 @@ class Base():
                                       auth=(auth.username, auth.password),
                                       headers={'content-type': 'application/json'})
         r.raise_for_status()
-        return r.json
+        return r.json()
 
     def _do_get(self, url):
         return self._do_request(url, 'get', None)
