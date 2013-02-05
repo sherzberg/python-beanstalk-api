@@ -3,3 +3,4 @@
 *.project
 test.py
 /.idea
+*egg-info
