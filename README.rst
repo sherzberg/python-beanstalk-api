@@ -1,3 +1,5 @@
+.. image:: https://travis-ci.org/whelmingbytes/python-beanstalk-api.png?branch=master
+
 Python Beanstalk API
 ====================
 
