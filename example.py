@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-import os, sys
+import os
+import sys
 import beanstalk
 
 domain = os.environ.get('BEANSTALK_DOMAIN')
@@ -22,7 +23,6 @@ print('All users:')
 users = beanstalk.api.user.find()
 for user in users:
     print('\t'+user['user']['first_name']+' '+user['user']['last_name'])
-    
 print('All repositories:')
 for repo in beanstalk.api.repository.find():
     print('\t'+str(repo['repository']['id'])+' '+repo['repository']['name'])
