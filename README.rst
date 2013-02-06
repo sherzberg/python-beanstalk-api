@@ -18,7 +18,7 @@ Prerequisites:
 1. A Beanstalk App user with api turned on.
 
    a. see http://support.beanstalkapp.com/customer/portal/articles/68111-how-can-i-enable-the-beanstalk-api)
-2. Python 2.6, 2.7, or 3.2 (tox and travis-ci configuration are available)
+2. Python 2.6, 2.7, 3.2, or pypy (tox and travis-ci configuration are available)
 
 Installation:
 =============
