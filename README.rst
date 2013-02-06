@@ -27,7 +27,7 @@ Installation:
 
     git clone git@github.com:whelmingbytes/python-beanstalk-api.git
     cd python-beanstalk-api
-    pip install -e .
+    pip install .
 
 Example Usage:
 ==============
