@@ -19,9 +19,15 @@ Prerequisites:
 
    a. see http://support.beanstalkapp.com/customer/portal/articles/68111-how-can-i-enable-the-beanstalk-api)
 2. Python 2.6, 2.7, or 3.2 (tox and travis-ci configuration are available)
-3. Python Dependencies
 
-   b. pip install -r requirements.txt
+Installation:
+=============
+
+::
+
+    git clone git@github.com:whelmingbytes/python-beanstalk-api.git
+    cd python-beanstalk-api
+    pip install -e .
 
 Example Usage:
 ==============
