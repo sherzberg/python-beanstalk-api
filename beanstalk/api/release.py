@@ -18,3 +18,14 @@ class Release(Base):
 
     def get_release(self, repository_id, release_id):
         return self.__get__(repository_id=repository_id, release_id=release_id)
+
+    def deploy(self, repository_id, environment_id, message, revision):
+        url = str(repository_id) + '/releases.json?environment_id=' + str(environment_id)
+        data = {
+            'release': {
+                'comment': message,
+                'revision': str(revision)
+            }
+        }
+        self._do_post(url, data)
+    
