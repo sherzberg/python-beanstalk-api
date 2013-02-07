@@ -10,6 +10,13 @@ class Repository(Base):
             url = 'repositories.json'
             
         return self._do_get(url)
+
+    def find_by_name(self, repository_name):
+        repos = self.find()
+        for repo in repos:
+            if repo['repository']['name'] == repository_name:
+                return repo
+        return None
     
     def create(self, name, title, color_label='label-white', vcs='subversion',  create_structure=False):
         url = 'repositories.json'
