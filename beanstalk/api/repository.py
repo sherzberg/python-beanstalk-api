@@ -22,6 +22,8 @@ class Repository(Base):
         repo = self.find_by_name(repository_name)
         if repo is not None:
             return repo['repository']['id']
+        else:
+            return None
     
     def create(self, name, title, color_label='label-white', vcs='subversion',  create_structure=False):
         url = 'repositories.json'
