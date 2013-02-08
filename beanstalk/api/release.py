@@ -1,6 +1,8 @@
 from .base import Base
 
+
 class Release(Base):
+
     def __get__(self, repository_id=None, release_id=None):
         if repository_id is None:
             url = 'releases.json'
@@ -8,6 +10,7 @@ class Release(Base):
             url = str(repository_id) + '/releases.json'
         else:
             url = str(repository_id) + '/releases/' + str(release_id) + '.json'
+
         return self._do_get(url)
 
     def find_all(self):
@@ -28,4 +31,3 @@ class Release(Base):
             }
         }
         self._do_post(url, data)
-    
