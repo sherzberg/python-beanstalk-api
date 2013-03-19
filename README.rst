@@ -1,5 +1,9 @@
 .. image:: https://travis-ci.org/whelmingbytes/python-beanstalk-api.png?branch=master
 
+.. image:: https://d2weczhvl823v0.cloudfront.net/whelmingbytes/python-beanstalk-api/trend.png
+   :alt: Bitdeli badge
+   :target: https://bitdeli.com/free
+
 Python Beanstalk API
 ====================
 
